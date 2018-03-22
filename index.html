@@ -1,0 +1,106 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Day of The Week Trick</h1>
+    <h3>Intro</h3>
+    <p>Do you want to <span class = 'strikethrough'>annoy</span> impress your friends with simple math tricks?  Do you love expending mental energy memorizing algorithms just to be able to calculate things that could be found in a five second internet search? Then this website might be for you.<br><br>  Read on to find out how you can take any date and calculate which day of the week that date occured on... because you never know when you'll be stranded on a remote island and absolutely have to settle a debate over whether the Declaration of Independence was signed on a Wednesday or a Thursday.</p>
+    <h3>Zeller's Congruence</h3>
+    In the late 1800s, a German mathematician named Christian Zeller published two formulas that could be used to calculate the day of the week for any date: one formula for the Gregorian Calendar that was implement in October of 1582 and another for the Julian calendar which the Gregorian Calendar replaced.<br><br>Here are the formulas:<p>
+    <h4>Gregorian Calendar Formula <span class ="not-bold">- for October 15, 1582 and after.</span></h4>
+    <img src="https://tinyurl.com/y9ngq7zk" class ="formula1">
+    <h4>Julian Calendar Formula <span class ="not-bold">- for dates before October 15, 1582.</span></h4>
+    <img src="https://tinyurl.com/y7vb7dnr" class ="formula2">
+    <p>h represents the day of the week (0 is Saturday, 1 is Sunday... 6 is Friday)<br>q represents the day of the month<br>m represents the month* (3 is March, 4 is April, ... 14 is February)<br>K represents the last two digits* of a 4 digit year.<br>J represents the first two digits of a 4 digit year<br><br>* In order for the math to work out with the leap year, Janaury and February are counted as the 13th and 14th months of the previous year.  So for January 2013, m would equal 13 and K would equal 12.<br><br>** The symbol around the 13(m+1)/5 and the K/4 and the J/4 means round to the nearest whole number.  Mod 7 means find the remainder when divided by 7 (this is a slight oversimplification, but it is a good enough definition for this problem).</p>
+    <h3>An Example</h3>
+    <p>Let's try July 4th, 1776 as an example and see if we can settle the debate over whether it was a Wednesday or a Thursday.  Since it is the 4th, q = 4, for July m = 7, for 1776 K = 76 and J = 17.  If we multiply 13 by 7 + 1, we get 104, then when we divide by 5 and round down we will get 20.  K (76) divided by 4 is 19.  J (17) divided by 4 and rounded down is 4.  And finally -2 times J equals -34.  So we add 4 + 20 + 76 + 19 + 4 - 34 and arrive at the answer of 89.  And if we divide by 7, the remainder is 4, which means that July 4th is a Thursday. But that's a lot of arithmetic.  And we didn't even settle our debate about which day the Declaration of Indepence was signed because <a href="http://www.history.com/news/9-things-you-may-not-know-about-the-declaration-of-independence" target="_blank">the Declaration of Independence wasn't signed on July 4.</a><br>
+    <h3>A Faster Way</h3>
+    <p>If you are really commmitted to this trick and want to compute the date quickly in your head, it will take a bit of memorization.  We can memorize the result for the 13(m+1)/5 part of the equation for each month, and we can make those numbers smaller and easier to work with by dividing them by 7 and taking the remainder.  I've already done all of that work for you on the table below. I called these numbers the month modifier.</p>
+    <div class ="grid">
+      <img src="https://tinyurl.com/yclk5vp5/">
+      <img id="daysWeek" src="https://tinyurl.com/yc4dw5e7/">
+      <table>
+        <tr><th>Month</th>  <th>Modifier</th></tr>
+        <tr><td>January</td><td>1</td></tr>
+        <tr><td>February</td><td>4</td></tr>
+        <tr><td>March</td><td>3</td></tr>
+        <tr><td>April</td><td>6</td></tr>
+        <tr><td>May</td><td>1</td></tr>
+        <tr><td>June</td><td>4</td></tr>
+        <tr><td>July</td><td>6</td></tr>
+        <tr><td>August</td><td>2</td></tr>
+        <tr><td>September</td><td>5</td></tr>
+        <tr><td>October</td><td>0</td></tr>
+        <tr><td>November</td><td>3</td></tr>
+        <tr><td>December</td><td>5</td></tr>
+      </table>
+    </div>
+    <p>Next we can do the same thing for J/4 - 2J for the centuries that we use most often.  I call this the century modifier.  For years in the 1700s the century modifier is 5, for years in the 1800s the century modifier is 3, for years in the 1900s the century modifier is 1, and for years in the 2000s the century modifier is 0.  <br><br>If we make M represent the month modifier and C represent the century modifier, we get the formulas written below:<br></p>
+    <h4>Gregorian Calendar Formula <span class ="not-bold">- for the years 1700 - 2099.</span></h4>
+    <img src="https://tinyurl.com/y9wxgght" class ="formula3">
+     <h4>Gregorian Calendar Formula <span class ="not-bold">- for dates between October 15, 1582 and December 31, 1699 and years 2100 and later.</span></h4>
+    <img src="https://tinyurl.com/yckhjbog" class ="formula4">
+     <h4>Julian Calendar Formula <span class ="not-bold">- for dates before October 15, 1582.</span></h4>
+    <img src="https://tinyurl.com/y8odrue3" class ="formula1">
+    <h3>Let's Try Some Examples</h3>
+    <p> Select a date below to calculate the day of the week and read an explanation of how the day of the week is calculated.</p>
+    <div id="form">
+    <select name='month' id='month' onchange = "changeDay()">
+<option value='0' hidden>Month</option>
+<option value='January'>January</option>
+<option value='February'>February</option>
+<option value='March'>March</option>
+<option value='April'>April</option>
+<option value='May'>May</option>
+<option value='June'>June</option>
+<option value='July'>July</option>
+<option value='August'>August</option>
+<option value='September'>September</option>
+<option value='October'>October</option>
+<option value='November'>November</option>
+<option value='December'>December</option>
+</select>
+    <select name='day' id='day' disabled>
+      <option value='0' hidden>DD</option>
+<option value='1'>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5'>5</option>
+<option value='6'>6</option>
+<option value='7'>7</option>
+<option value='8'>8</option>
+<option value='9'>9</option>
+<option value='10'>10</option>
+<option value='11'>11</option>
+<option value='12'>12</option>
+<option value='13'>13</option>
+<option value='14'>14</option>
+<option value='15'>15</option>
+<option value='16'>16</option>
+<option value='17'>17</option>
+<option value='18'>18</option>
+<option value='19'>19</option>
+<option value='20'>20</option>
+<option value='21'>21</option>
+<option value='22'>22</option>
+<option value='23'>23</option>
+<option value='24'>24</option>
+<option value='25'>25</option>
+<option value='26'>26</option>
+<option value='27'>27</option>
+<option value='28'>28</option>
+<option value='29'>29</option>
+<option value='30' id="30">30</option>
+<option value='31' id="31">31</option>
+</select>
+    <input id="year" placeholder ="YYYY" maxlength="4" size ="4">
+    <a href =#form><input type ="submit" Onclick="dayOfWeek()"></a>
+   </div>
+    <p id="error"><span id="error1"></span><span id="error2"></span><span id="error3"></span></p>
+    <p><strong>Day of the week: </strong><span id="weekDay"></span></p>
+    <p><strong>Explanation:</strong></p>
+    <p id="explanation">This date is <span id = "whyCalendar"></span> so we use the formula: <br><br><img id ="formulaImage"></img><br><br>Since it is the <span id = "dayth1"></span>, q = <span id = "q"></span>, for <span id = "month1"></span>, M = <span id = "M"></span>, for <span id = "year1"></span><span id = "asterisk"></span>, K = <span id = "K1"></span> and <span id = "C-J"></span> = <span id = "valC-J"></span>. K (<span id = "K2"></span>) divided by 4 and rounded down is <span id ="K4"></span>.  <span id ="century"></span> So we add <span id = "algebra"></span> and arrive at the answer of <span id = "answer1"></span>.  And if we divide <span id = "answer2"></span> by 7, the remainder is <span id = "weekDayNum"></span>, which means that <span id = "month2"></span> <span id = "dayth2"></span>, <span id = "year2"></span> is a <span id = "weekDay1"></span>.<span id = "Jan-Feb"></span></p>
+
+  </body>
+</html>
