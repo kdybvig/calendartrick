@@ -1,0 +1,95 @@
+body {
+  background: linear-gradient(to top left, beige, #FFF)
+}
+
+h1 {
+  color: #346;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 250px 250px;
+  grid-column-gap: 50px;
+  grid-row-gap: 0px;
+  grid-template-rows: auto auto;
+  margin-bottom: 50px;
+}
+
+.grid img {
+  grid-column: 2/3;
+  max-height: 200px;
+  margin-top:0px;
+  padding: 0px;
+}
+
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  grid-column: 1/ 2;
+  grid-row: 1/3;
+  margin-top: 20px;
+}
+table th, td {
+  border:1px black solid;
+  padding: 5px 25px;
+}
+
+#form {
+  margin-top: 30px;
+}
+
+input::placeholder {
+  color: black;
+}
+
+.grid {
+  margin-top: 50px;
+}
+#error {
+  color:red;
+  font-size: 12px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.not-bold {
+  font-weight: 300;
+}
+
+.formula1 {
+  height: 60px;
+  max-height: 14vw;
+}
+
+.formula2 {
+  height: 73px;
+  max-height: 17vw;
+}
+
+.formula3 {
+  height: 66.5px;
+  max-height: 15.5vw
+}
+
+.formula4 {
+  height: 62.5px;
+  max-height: 14.5vw;
+}
+
+#explanation {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .grid {
+       display: block;
+  }
+    #daysWeek {
+    display: none;
+  }
+}
+}
